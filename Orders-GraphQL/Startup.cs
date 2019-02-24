@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using GraphQL;
+using GraphQL.Server;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
+using Orders.Schema;
+using Orders.Services;
+using System;
 
 namespace Orders_GraphQL
 {
@@ -15,6 +15,24 @@ namespace Orders_GraphQL
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSingleton<ICustomerService, CustomerService>();
+            services.AddSingleton<IOrderService, OrderService>();
+            services.AddSingleton<CustomerType>();
+            services.AddSingleton<OrderType>();
+            services.AddSingleton<OrderStatusesEnum>();
+            services.AddSingleton<OrdersQuery>();
+            services.AddSingleton<OrdersSchema>();
+
+            // Allow dependencies to be injected for GraphQL.net
+            services.AddSingleton<IDependencyResolver>(
+                c => new FuncDependencyResolver(type => c.GetRequiredService(type)));
+
+            services.AddGraphQL(options => {
+                options.EnableMetrics = true;
+                //options.ExposeExceptions = Environment.IsDevelopment();
+            })
+           .AddWebSockets()
+           .AddDataLoader();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -25,10 +43,11 @@ namespace Orders_GraphQL
                 app.UseDeveloperExceptionPage();
             }
 
-            app.Run(async (context) =>
-            {
-                await context.Response.WriteAsync("Hello World!");
-            });
+            app.UseDefaultFiles(); // endpoint -> index.html
+            app.UseStaticFiles(); // enable static file server
+            app.UseWebSockets();
+            app.UseGraphQLWebSockets<OrdersSchema>("/graphql");
+            app.UseGraphQL<OrdersSchema>("/graphql");
         }
     }
 }

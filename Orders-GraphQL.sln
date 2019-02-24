@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orders-GraphQL", "Orders-GraphQL\Orders-GraphQL.csproj", "{682A3FD6-2CCD-4860-93A4-64F583C8B6DD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server", "Orders-GraphQL\Server.csproj", "{682A3FD6-2CCD-4860-93A4-64F583C8B6DD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orders", "Orders\Orders.csproj", "{CEC6DFAD-F15C-4258-BE09-42C17701AEE4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{682A3FD6-2CCD-4860-93A4-64F583C8B6DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{682A3FD6-2CCD-4860-93A4-64F583C8B6DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{682A3FD6-2CCD-4860-93A4-64F583C8B6DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CEC6DFAD-F15C-4258-BE09-42C17701AEE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CEC6DFAD-F15C-4258-BE09-42C17701AEE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CEC6DFAD-F15C-4258-BE09-42C17701AEE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CEC6DFAD-F15C-4258-BE09-42C17701AEE4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
