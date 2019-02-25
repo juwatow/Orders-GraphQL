@@ -19,8 +19,10 @@ namespace Orders_GraphQL
             services.AddSingleton<IOrderService, OrderService>();
             services.AddSingleton<CustomerType>();
             services.AddSingleton<OrderType>();
+            services.AddSingleton<OrderCreateInputType>();
             services.AddSingleton<OrderStatusesEnum>();
             services.AddSingleton<OrdersQuery>();
+            services.AddSingleton<OrdersMutation>();
             services.AddSingleton<OrdersSchema>();
 
             // Allow dependencies to be injected for GraphQL.net

@@ -1,9 +1,6 @@
 ﻿using GraphQL.Types;
 using Orders.Models;
 using Orders.Services;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Orders.Schema
 {
@@ -16,6 +13,7 @@ namespace Orders.Schema
             Field(o => o.Description);
             Field(o => o.CreatedDate);
             Field<CustomerType>("customer", resolve: context => customerService.GetCustomerByIdAsync(context.Source.CustomerId));
+            Field<OrderStatusesEnum>("status", resolve: context => context.Source.Status);
         }
     }
 }
