@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Orders.Schema;
 using Orders.Services;
-using System;
 
 namespace Orders_GraphQL
 {

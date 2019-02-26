@@ -1,8 +1,5 @@
 ﻿using GraphQL.Types;
 using Orders.Services;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Orders.Schema
 {
